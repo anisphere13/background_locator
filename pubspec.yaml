@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # Ajoute ici d'autres dépendances utiles si besoin (ex: plugin platform interface)
 
 dev_dependencies:
   flutter_test:
