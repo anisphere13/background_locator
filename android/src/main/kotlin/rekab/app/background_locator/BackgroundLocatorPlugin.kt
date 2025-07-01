@@ -19,6 +19,17 @@ import rekab.app.background_locator.pluggables.InitPluggable
 
 class BackgroundLocatorPlugin : MethodCallHandler, FlutterPlugin, PluginRegistry.NewIntentListener, ActivityAware {
 
+    companion object {
+        @JvmStatic
+        fun registerAfterBoot(context: Context) {
+            val args = PreferencesManager.getSettings(context)
+            val plugin = BackgroundLocatorPlugin()
+            plugin.context = context
+            plugin.initializeService(args)
+            plugin.startIsolateService(args[Keys.ARG_SETTINGS] as Map<*, *>)
+        }
+    }
+
     private lateinit var context: Context
     private var activity: Activity? = null
     private lateinit var channel: MethodChannel
