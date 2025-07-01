@@ -2,13 +2,14 @@ group 'rekab.app.background_locator'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.23' // ✅ compatible SDK 35 et Java 17
+    ext.kotlin_version = '1.7.10'
     repositories {
         google()
-        mavenCentral() // ✅ remplacer jcenter obsolète
+        mavenCentral()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.4.0' // ✅ dernière version stable
+        classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -16,7 +17,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral() // ✅
+        mavenCentral()
     }
 }
 
@@ -24,12 +25,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'com.background_locator_2'
-    compileSdkVersion 35 // ✅ obligatoire avec google_sign_in 7.0.0 et AndroidX 1.16+
+    namespace 'rekab.app.background_locator'
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 24
-        targetSdkVersion 35
+        targetSdkVersion 34
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,8 +55,8 @@ android {
 
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version" // ✅ jdk8 conseillé
-    implementation "com.google.android.gms:play-services-location:21.0.1"     // ✅ version à jour
-    implementation 'com.google.code.gson:gson:2.10.1'                          // ✅ version à jour
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.gms:play-services-location:18.0.0"
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
