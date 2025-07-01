@@ -20,7 +20,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: rekab.app.background_locator
+        package: com.background_locator_2
         pluginClass: BackgroundLocatorPlugin
       ios:
         pluginClass: BackgroundLocatorPlugin
