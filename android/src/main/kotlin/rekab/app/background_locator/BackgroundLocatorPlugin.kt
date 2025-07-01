@@ -163,7 +163,13 @@ class BackgroundLocatorPlugin : MethodCallHandler, FlutterPlugin, PluginRegistry
         if (intent?.action != Keys.NOTIFICATION_ACTION) return false
         PreferencesManager.getNotificationCallback(activity)?.let { callback ->
             IsolateHolderService.backgroundEngine?.let { engine ->
-                MethodChannel(engine.dartExecutor.binaryMessenger, Keys.BACKGROUND_CHANNEL_ID).invokeMethod(Keys.BCM_NOTIFICATION_CLICK, callback)
+                MethodChannel(
+                    engine.dartExecutor.binaryMessenger,
+                    Keys.BACKGROUND_CHANNEL_ID
+                ).invokeMethod(
+                    Keys.BCM_NOTIFICATION_CLICK,
+                    hashMapOf(Keys.ARG_NOTIFICATION_CALLBACK to callback)
+                )
             }
         }
         return true
