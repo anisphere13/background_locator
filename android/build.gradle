@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'com.background_locator_2'
+    namespace 'com.ekasetiawans.background_locator'
     compileSdkVersion 34
 
     defaultConfig {
